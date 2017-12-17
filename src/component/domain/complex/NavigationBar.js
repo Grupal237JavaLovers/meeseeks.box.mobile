@@ -9,7 +9,6 @@ export default class NavigationBar extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.flexBuilder = new FlexBuilder();
     }
 
 	static defaultProps = {
@@ -25,7 +24,7 @@ export default class NavigationBar extends React.Component {
 
 	render = () =>
 		<View style={[{paddingTop: 22, backgroundColor: this.props.color},
-			// this.flexBuilder.withItemAlignment("center").withRowFlex().build()
+			new FlexBuilder().withItemAlignment("center").withRowFlex().build()
 		]}>
 			<SystemIcon url={this.props.leftIcon}
 			            onPress={this.props.leftAction}/>
