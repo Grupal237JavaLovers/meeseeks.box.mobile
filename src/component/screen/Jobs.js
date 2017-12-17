@@ -5,6 +5,7 @@ import {Colors} from "../styles/Colors";
 import {EmptyListDisplayed} from "../domain/list/EmptyListDisplayer";
 import {ActionButton} from "../domain/button/ActionButton";
 import {Screen} from "../domain/decorators/Screen";
+import {LoginService} from "../service/LoginService";
 
 
 export default class Jobs extends React.Component {
@@ -15,6 +16,7 @@ export default class Jobs extends React.Component {
 		<Screen backgroundColor={'white'}>
 			<TopBarNavigation
 				leftIcon={IconType.PROFILE_DARK}
+				leftAction={() => new LoginService(this.props.navigation).logout()}
 				rightIcon={IconType.SEARCH_DARK}
 				text={"Jobs"}/>
 			<EmptyListDisplayed

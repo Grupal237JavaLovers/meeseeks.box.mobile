@@ -13,7 +13,7 @@ class RegisterForm extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {username: '', password: '', confirmPassword: '', email: '', name: ''}
+		this.state = {username: '', password: '', confirmPassword: '', email: '', name: '', profileImageUrl: ''}
 	}
 
 	render = () =>
@@ -42,12 +42,15 @@ class RegisterForm extends React.Component {
 			<TextField input="Name"
 			           onChangeText={(name) => this.state.name = name}
 			           image={IconType.PROFILE_DARK}/>
+            <TextField input="Profile Image Url"
+                       onChangeText={(profileImageUrl) => this.state.profileImageUrl = profileImageUrl}
+                       image={IconType.PLUS_DARK}/>
 			<View style={new FlexBuilder().withRowFlex().build()}>
 				<BottomButton
 					backgroundColor={Colors.BLUE} height={70}
 					color={Colors.WHITE} fontSize={16} text='Register'
-					action={() => new RegisterService(this.props.navigation).signUp(this.state.username,
-						this.state.password, this.state.confirmPassword, this.state.email, this.state.name)}/>
+					action={() => new RegisterService(this.props.navigation).signUpConsumer(this.state.username,
+						this.state.password, this.state.confirmPassword, this.state.email, this.state.name, this.state.profileImageUrl)}/>
 			</View>
 		</KeyboardAvoidingView>;
 }

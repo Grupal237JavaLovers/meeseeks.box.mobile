@@ -28,7 +28,8 @@ export default class NavigationBar extends React.Component {
 			<NavigationBarText color={this.props.textColor}
 			                   align={this.props.align}>
 				{this.props.text}</NavigationBarText>
-			<SystemIcon url={this.props.rightIcon}
-			            onPress={this.props.rightAction}/>
+			{this.props.rightIcon ?
+				(<SystemIcon url={this.props.rightIcon}
+			            onPress={this.props.rightAction}/>) : null}
 		</View>
 }

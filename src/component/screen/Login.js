@@ -1,15 +1,10 @@
 import React from "react";
 import {TextField} from "../domain/complex/TextField";
 import {BottomButton} from "../domain/button/BottomButton";
-import {AsyncStorage, KeyboardAvoidingView, Text, View} from "react-native";
+import {KeyboardAvoidingView, Text, View} from "react-native";
 import Intro from "./Intro";
 import FlexBuilder from "../styles/FlexBuilder";
-import {
-	FullButtonStyle,
-	withBackgroundColor,
-	withTextColor
-} from "../styles/Styles";
-import {COLOR_BLUE, Colors} from "../styles/Colors";
+import {Colors} from "../styles/Colors";
 import {IconType} from "../domain/shape/Icon";
 import NavigationBar from "../domain/complex/NavigationBar";
 import {LoginService} from "../service/LoginService";

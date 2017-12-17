@@ -1,6 +1,5 @@
-import {AsyncStorage} from "react-native";
 import {Endpoint} from "./Endpoint";
-import {Alert} from "react-native";
+import {Alert, AsyncStorage} from "react-native";
 
 
 export class LoginService {
@@ -8,6 +7,7 @@ export class LoginService {
 	constructor(navigation) {
 		this.navigation = navigation
 		this.endpoint = Endpoint.LOGIN
+        this.STORAGE_AUTH = 'authorization';
 	}
 
 	alert = (message) => Alert.alert("Unable to login ...", message)
@@ -25,6 +25,15 @@ export class LoginService {
 		.then((response) => response.status === 401 ?
 			this.alert("The username or password is incorrect!"): response)
 		.then((response) => response.headers.get("authorization"))
-		.then((token) => AsyncStorage.setItem('authorization', token))
+		.then((token) => AsyncStorage.setItem(this.STORAGE_AUTH, token))
 		.then(() => this.navigation.navigate('Jobs'))
+
+	async isLoggedIn() {
+		return await AsyncStorage.getItem(this.STORAGE_AUTH);
+    }
+
+    async logout() {
+		await AsyncStorage.removeItem(this.STORAGE_AUTH);
+		this.navigation.navigate('Welcome');
+	}
 }
