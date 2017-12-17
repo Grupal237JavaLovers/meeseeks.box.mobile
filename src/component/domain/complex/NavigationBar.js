@@ -7,7 +7,10 @@ import {NavigationBarText} from "../text/NavigationBarText";
 
 export default class NavigationBar extends React.Component {
 
-	flexBuilder = new FlexBuilder();
+	constructor(props) {
+		super(props);
+		this.flexBuilder = new FlexBuilder();
+    }
 
 	static defaultProps = {
 		leftIcon: IconType.PROFILE_DARK,
@@ -22,7 +25,8 @@ export default class NavigationBar extends React.Component {
 
 	render = () =>
 		<View style={[{paddingTop: 22, backgroundColor: this.props.color},
-			this.flexBuilder.withItemAlignment("center").withRowFlex().build()]}>
+			// this.flexBuilder.withItemAlignment("center").withRowFlex().build()
+		]}>
 			<SystemIcon url={this.props.leftIcon}
 			            onPress={this.props.leftAction}/>
 			<NavigationBarText color={this.props.textColor}
